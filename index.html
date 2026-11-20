@@ -34,7 +34,7 @@ body{background:#e9dfc9;color:#493b2d;font-family:Georgia,"Times New Roman",seri
 </head>
 <body>
 <div class="wrap">
-  <div class="topbar"><div class="brand">✦ BIO.LAB <span style="color:#83e4f5">/ лепбук</span></div><div class="pill">Біологія · 8 клас</div></div>
+  <div class="topbar"><div class="brand">✦ BIO.LAB <span style="color:#83e4f5"></span></div><div class="pill">Біологія · 8 клас</div></div>
   <section class="hero" id="home">
     <div>
       <div class="eyebrow">✦ інтерактивний навчальний проєкт</div>
@@ -72,7 +72,7 @@ body{background:#e9dfc9;color:#493b2d;font-family:Georgia,"Times New Roman",seri
     <p style="margin:0;color:#51432f">Лепбук допоможе пригадати основні відділи скелета людини, розглянути їхню будову та функції. Натискай на кишеньки, щоб відкрити додаткову інформацію, а наприкінці перевір себе.</p>
   </section>
   <main class="main" id="book">
-    <div class="section-head"><div><div class="eyebrow">твоя навчальна мандрівка</div><h2>Інтерактивний лепбук</h2><p>Обирай розділ і відкривай кишеньки.</p></div><button class="back" onclick="closeBook()">← На головну</button></div>
+    <div class="section-head"><div><div class="eyebrow"></div><h2>Інтерактивний лепбук</h2><p>Обирай розділ і відкривай кишеньки.</p></div><button class="back" onclick="closeBook()">← На головну</button></div>
     <nav class="nav" aria-label="Навігація лепбука">
       <button class="active" data-target="overview">Огляд</button><button data-target="pockets">Кишеньки</button><button data-target="functions">Функції</button><button data-target="facts">Цікаво знати</button><button data-target="quiz">Мінітест</button><button data-target="myths">Факт чи міф?</button>
     </nav>
@@ -80,14 +80,12 @@ body{background:#e9dfc9;color:#493b2d;font-family:Georgia,"Times New Roman",seri
       <div class="lapbook-intro"><span>✂ НАВЧАЛЬНИЙ ЛЕПБУК · 8 КЛАС</span><h2>Відділи скелета людини</h2><p>Розгорни сторінки, відкрий кишеньки та дізнайся, як влаштована опора нашого тіла.</p></div>
       <div class="lapbook-board">
         <div class="book-column left-fold">
-          <div class="fold-title">📌 ЛІВА СТУЛКА</div>
           <button class="paper-pocket" onclick="showSection('pockets')"><span class="sticker">💀</span><b>Скелет голови</b><small>Череп · мозковий і лицевий відділи</small><em>Відкрити кишеньку ↗</em></button>
           <button class="paper-pocket" onclick="showSection('pockets')"><span class="sticker">🫁</span><b>Скелет тулуба</b><small>Хребет і грудна клітка</small><em>Відкрити кишеньку ↗</em></button>
           <button class="paper-pocket slim-pocket" onclick="showSection('functions')"><span class="sticker">🛡️</span><b>Функції скелета</b><small>Опора · захист · рух</small><em>Дізнатися ↗</em></button>
           <div class="paper-note">💡 <b>Підказка</b><br>Кістки, суглоби й м’язи працюють разом!</div>
         </div>
         <div class="book-column center-fold">
-          <div class="fold-title">📖 ЦЕНТРАЛЬНА ЧАСТИНА</div>
           <div class="center-stamp">BIOLOGY<br><strong>LAB</strong></div>
           <div class="skeleton-doodle">🦴</div>
           <h3>Скелет людини</h3>
@@ -97,7 +95,6 @@ body{background:#e9dfc9;color:#493b2d;font-family:Georgia,"Times New Roman",seri
           <div class="center-foot">ДОСЛІДЖУЙ · ЗАПАМ’ЯТОВУЙ · ПЕРЕВІРЯЙ</div>
         </div>
         <div class="book-column right-fold">
-          <div class="fold-title">📎 ПРАВА СТУЛКА</div>
           <button class="paper-pocket" onclick="showSection('pockets')"><span class="sticker">💪</span><b>Верхні кінцівки</b><small>Плечовий пояс, рука, кисть</small><em>Відкрити кишеньку ↗</em></button>
           <button class="paper-pocket" onclick="showSection('pockets')"><span class="sticker">🦵</span><b>Нижні кінцівки</b><small>Тазовий пояс, нога, стопа</small><em>Відкрити кишеньку ↗</em></button>
           <button class="paper-pocket slim-pocket" onclick="showSection('facts')"><span class="sticker">🌟</span><b>Цікаві факти</b><small>Дізнайся більше про кістки</small><em>Читати ↗</em></button>
