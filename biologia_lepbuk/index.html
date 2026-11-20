@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101936">
+<title>Відділи скелета людини — інтерактивний лепбук</title>
+<style>
+:root{--bg:#0b1228;--panel:#17264b;--panel2:#203967;--blue:#56c7f2;--cyan:#83e4f5;--purple:#9b75ee;--gold:#ffd477;--text:#f4f7ff;--muted:#bac8e8;--line:#42669f;--green:#76dfb0;--red:#ff8d9b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#294d86 0,#111d3b 42%,#090f22 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+button{font:inherit;cursor:pointer}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;color:var(--muted);font-size:.9rem}.brand{font-weight:800;color:white;letter-spacing:.02em}.pill{border:1px solid #5c7bb3;border-radius:99px;padding:6px 12px;background:#17264b}
+.hero{min-height:calc(100vh - 65px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding:38px 0 70px}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem}.hero h1{font-size:clamp(2.5rem,6vw,5.1rem);line-height:1.02;margin:18px 0;color:white;letter-spacing:-.045em}.hero h1 span{color:var(--cyan)}.lead{font-size:1.1rem;color:#d0dcf6;max-width:590px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:0;border-radius:14px;padding:13px 20px;font-weight:800;transition:.2s;box-shadow:0 7px 20px #050b1d55}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary{background:linear-gradient(110deg,#46bce9,#6385ef);color:#08152e}.secondary{background:#243963;color:white;border:1px solid #5475ad}.hero-note{margin-top:22px;color:#9fb2d9;font-size:.88rem}.hero-art{background:linear-gradient(145deg,#1e3767,#111d3c);border:1px solid #5479b5;border-radius:30px;padding:20px;box-shadow:0 24px 65px #02081788;position:relative;overflow:hidden}.hero-art:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#4bc8f322;filter:blur(15px);top:-90px;right:-70px}.skeleton-svg{width:100%;height:auto;max-height:530px;position:relative;z-index:1}.art-caption{text-align:center;color:#c6d8fa;font-size:.85rem}
+.main{display:none;padding:22px 0 70px}.main.visible{display:block}.hero.hidden{display:none}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:28px 0 18px}.section-head h2{margin:0;font-size:clamp(1.6rem,4vw,2.4rem)}.section-head p{color:var(--muted);margin:4px 0 0}.back{background:transparent;border:1px solid #5674a8;color:#e9f2ff;border-radius:12px;padding:9px 13px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#121f40;border:1px solid #344f80;border-radius:18px;position:sticky;top:8px;z-index:5;box-shadow:0 8px 24px #03091866}.nav button{background:transparent;color:#c7d7f4;border:1px solid transparent;border-radius:10px;padding:9px 13px;font-weight:700}.nav button.active,.nav button:hover{background:#2d4f87;border-color:#5e8ac8;color:white}
+.panel{background:linear-gradient(145deg,#1b2d55,#142342);border:1px solid #45679e;border-radius:22px;padding:22px;box-shadow:0 14px 36px #02081755}.intro-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.factbox{background:#10203e;border:1px solid #345b8d;border-radius:17px;padding:18px}.factbox strong{color:var(--gold)}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.pocket{position:relative;overflow:hidden}.pocket .num{font-size:.78rem;color:var(--cyan);font-weight:800;letter-spacing:.1em}.pocket h3{margin:5px 0 8px;font-size:1.35rem}.pocket p{color:#c9d7f1;margin:0 0 12px}.pocket .emoji{font-size:2rem}.pocket button.more{background:#294d82;border:1px solid #5d83bb;color:white;padding:9px 12px;border-radius:11px;font-weight:700}.details{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #3a5685;color:#dce7fb}.details.open{display:block}.details ul{padding-left:20px}.details li{margin:6px 0}.mini-label{color:var(--gold);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.bone-map{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.bone-chip{background:#14284d;border:1px solid #3d6097;padding:13px;border-radius:14px}.bone-chip b{display:block;color:#a9eaff}.callout{border-left:4px solid var(--gold);background:#18294b;padding:14px 16px;border-radius:0 14px 14px 0;color:#dce6fa;margin-top:16px}
+.quiz{display:grid;gap:14px}.q-card{background:#152747;border:1px solid #3b5e91;border-radius:17px;padding:17px}.q-card h3{font-size:1.04rem;margin:0 0 12px}.options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.option{background:#233c69;border:1px solid #4d70a7;color:#f4f7ff;text-align:left;border-radius:11px;padding:10px 12px}.option:hover{background:#31558c}.option.correct{background:#174d48;border-color:#58cba6}.option.wrong{background:#5b2b43;border-color:#f18da5}.feedback{font-size:.9rem;color:#cbd8f1;margin-top:9px;min-height:1.3em}.score{font-size:1.1rem;font-weight:800;color:var(--gold)}.progress{height:9px;background:#0c1831;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#54c8e9,#9d81f2);transition:width .3s}
+.myth-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.myth{background:#16294b;border:1px solid #3d6097;padding:16px;border-radius:16px}.myth p{margin:0 0 12px}.myth button{border:1px solid #5377ac;border-radius:10px;padding:8px 12px;background:#284a7e;color:white;margin-right:6px}.myth .result{font-size:.9rem;color:var(--cyan);margin-top:10px;min-height:2.6em}
+footer{border-top:1px solid #2c416b;padding:25px 0 35px;color:#9eb1d6;text-align:center;font-size:.88rem}.small{font-size:.88rem;color:var(--muted)}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding-top:18px}.hero-art{max-width:520px;margin:auto}.intro-grid,.columns{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.nav{position:static}.bone-map{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.wrap{width:min(100% - 22px,1120px)}.panel{padding:16px}.options,.myth-grid{grid-template-columns:1fr}.hero h1{font-size:2.65rem}.topbar{font-size:.8rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="brand">✦ BIO.LAB <span style="color:#83e4f5">/ лепбук</span></div><div class="pill">Біологія · 8 клас</div></div>
+  <section class="hero" id="home">
+    <div>
+      <div class="eyebrow">✦ інтерактивний навчальний проєкт</div>
+      <h1>ВІДДІЛИ<br><span>СКЕЛЕТА</span><br>ЛЮДИНИ</h1>
+      <p class="lead">Досліди, з яких частин складається скелет, за що відповідають його відділи та як кістки допомагають нам рухатися й захищають внутрішні органи.</p>
+      <div class="actions"><button class="btn primary" onclick="openBook()">📖 Відкрити лепбук</button><button class="btn secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Про проєкт ↓</button></div>
+      <div class="hero-note">Навчайся у власному темпі · Перевіряй знання · Відкривай цікаві факти</div>
+    </div>
+    <div class="hero-art">
+      <svg class="skeleton-svg" viewBox="0 0 420 560" role="img" aria-label="Схематичне зображення скелета людини">
+        <defs><linearGradient id="bone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f0df"/><stop offset="1" stop-color="#8ed8ed"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g fill="none" stroke="url(#bone)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+          <path d="M210 42c-34 0-51 25-48 55 2 23 17 38 48 40 31-2 46-17 48-40 3-30-14-55-48-55z" fill="#dce9e5" stroke-width="5"/>
+          <path d="M184 75q26 18 52 0M189 106q21 13 42 0M210 137v31"/>
+          <path d="M210 168v164M210 174l-55 12-34 35M210 174l55 12 34 35"/>
+          <path d="M155 186q-39 12-48 49M265 186q39 12 48 49"/>
+          <path d="M210 177q-45 14-46 48t46 31q46-7 46-31t-46-48z" stroke-width="5"/>
+          <path d="M164 205q46 24 92 0M165 225q45 24 90 0M170 246q40 20 80 0M180 267q30 16 60 0"/>
+          <path d="M210 332l-42 18-23 40M210 332l42 18 23 40" />
+          <path d="M168 350q42 29 84 0M168 365q42 25 84 0" stroke-width="6"/>
+          <path d="M168 390l-18 67-8 64M252 390l18 67 8 64" stroke-width="13"/>
+          <path d="M142 521l-27 12M278 521l27 12M150 457l-15 4M270 457l15 4" stroke-width="8"/>
+          <path d="M108 235l-18 65-17 42M312 235l18 65 17 42" stroke-width="10"/>
+          <path d="M73 342l-8 33 15 18 17-8 5-25M347 342l8 33-15 18-17-8-5-25" stroke-width="6"/>
+          <path d="M192 139q18 8 36 0" stroke-width="4"/>
+        </g>
+        <g fill="#65d8f4"><circle cx="74" cy="110" r="4"/><circle cx="345" cy="150" r="5"/><circle cx="330" cy="420" r="4"/><circle cx="86" cy="430" r="5"/><circle cx="295" cy="65" r="3"/></g>
+        <g stroke="#65d8f4" stroke-width="1.5" opacity=".65"><path d="M28 160h75l35 35M315 105h75l-65 65M25 400h90l25-20M310 385h80"/></g>
+      </svg>
+      <div class="art-caption">Скелет — опора нашого тіла та основа руху</div>
+    </div>
+  </section>
+  <section id="about" class="panel" style="margin:10px 0 50px">
+    <div class="mini-label">Про цей лепбук</div><h2 style="margin:5px 0 8px">Знайомство зі скелетом</h2>
+    <p style="margin:0;color:#cbd8f1">Лепбук допоможе пригадати основні відділи скелета людини, розглянути їхню будову та функції. Натискай на кишеньки, щоб відкрити додаткову інформацію, а наприкінці перевір себе.</p>
+  </section>
+  <main class="main" id="book">
+    <div class="section-head"><div><div class="eyebrow">твоя навчальна мандрівка</div><h2>Інтерактивний лепбук</h2><p>Обирай розділ і відкривай кишеньки.</p></div><button class="back" onclick="closeBook()">← На головну</button></div>
+    <nav class="nav" aria-label="Навігація лепбука">
+      <button class="active" data-target="overview">Огляд</button><button data-target="pockets">Кишеньки</button><button data-target="functions">Функції</button><button data-target="facts">Цікаво знати</button><button data-target="quiz">Мінітест</button><button data-target="myths">Факт чи міф?</button>
+    </nav>
+    <section id="overview" class="book-section">
+      <div class="section-head"><div><h2>Як поділяють скелет?</h2><p>Умовно скелет людини складається з кількох великих відділів.</p></div></div>
+      <div class="intro-grid">
+        <div class="panel"><div class="mini-label">Запам’ятай</div><h3>4 основні відділи</h3><p>У шкільному курсі зазвичай виділяють скелет голови, тулуба, верхніх і нижніх кінцівок.</p>
+          <div class="bone-map">
+            <div class="bone-chip"><b>① Голова</b><span>Череп</span></div><div class="bone-chip"><b>② Тулуб</b><span>Хребет і грудна клітка</span></div><div class="bone-chip"><b>③ Верхні кінцівки</b><span>Пояс і вільна частина</span></div><div class="bone-chip"><b>④ Нижні кінцівки</b><span>Пояс і вільна частина</span></div>
+          </div>
+        </div>
+        <div class="factbox"><div class="mini-label">Головна думка</div><h3>Кістки працюють разом</h3><p>Скелет утворює міцну основу тіла. Разом із м’язами він забезпечує рухи, а також захищає важливі органи.</p><p><strong>Порада:</strong> вивчай не лише назви кісток, а й те, де вони розташовані та яку роботу виконують.</p></div>
+      </div>
+    </section>
+    <section id="pockets" class="book-section" hidden>
+      <div class="section-head"><div><h2>Секретні кишеньки</h2><p>Натисни «Відкрити», щоб прочитати більше.</p></div></div>
+      <div class="cards">
+        <article class="panel pocket"><div class="emoji">💀</div><div class="num">КИШЕНЬКА 01</div><h3>Скелет голови — череп</h3><p>Захищає головний мозок і формує основу обличчя.</p><button class="more" aria-expanded="false">＋ Відкрити кишеньку</button><div class="details"><p><b>Череп має два відділи:</b></p><ul><li><b>Мозковий</b> — утворює порожнину, у якій міститься головний мозок.</li><li><b>Лицевий</b> — формує кісткову основу обличчя, бере участь в утворенні порожнин носа й рота та очниць.</li></ul><p>Більшість кісток черепа з’єднані нерухомо швами. Виняток — нижня щелепа, яка рухається під час жування та мовлення.</p></div></article>
+        <article class="panel pocket"><div class="emoji">🫁</div><div class="num">КИШЕНЬКА 02</div><h3>Скелет тулуба</h3><p>Складається з хребта та грудної клітки.</p><button class="more" aria-expanded="false">＋ Відкрити кишеньку</button><div class="details"><p><b>Хребет</b> — опора тіла й захист спинного мозку. Він має 5 відділів:</p><ul><li>шийний — 7 хребців;</li><li>грудний — 12;</li><li>поперековий — 5;</li><li>крижовий — зазвичай 5 зрощених хребців;</li><li>куприковий — зазвичай 4–5 зрощених хребців.</li></ul><p><b>Грудна клітка</b> утворена грудними хребцями, 12 парами ребер і грудиною. Вона захищає серце й легені.</p></div></article>
+        <article class="panel pocket"><div class="emoji">💪</div><div class="num">КИШЕНЬКА 03</div><h3>Скелет верхніх кінцівок</h3><p>Допомагає виконувати точні та різноманітні рухи руками.</p><button class="more" aria-expanded="false">＋ Відкрити кишеньку</button><div class="details"><p>Складається з <b>плечового пояса</b> та вільної верхньої кінцівки.</p><ul><li>Плечовий пояс: дві лопатки й дві ключиці.</li><li>Плече: плечова кістка.</li><li>Передпліччя: ліктьова та променева кістки.</li><li>Кисть: кістки зап’ястка, п’ястка та фаланги пальців.</li></ul><p>Руки дають змогу хапати предмети, писати, працювати й виконувати складні рухи.</p></div></article>
+        <article class="panel pocket"><div class="emoji">🦵</div><div class="num">КИШЕНЬКА 04</div><h3>Скелет нижніх кінцівок</h3><p>Підтримує масу тіла та забезпечує ходьбу, біг і стрибки.</p><button class="more" aria-expanded="false">＋ Відкрити кишеньку</button><div class="details"><p>Складається з <b>тазового пояса</b> та вільної нижньої кінцівки.</p><ul><li>Тазовий пояс утворений двома тазовими кістками, які з’єднуються з крижовою кісткою.</li><li>Стегно: стегнова кістка — найдовша кістка людини.</li><li>Колінна ділянка: надколінок.</li><li>Гомілка: великогомілкова та малогомілкова кістки.</li><li>Стопа: кістки заплесна, плесна та фаланги пальців.</li></ul></div></article>
+      </div>
+    </section>
+    <section id="functions" class="book-section" hidden>
+      <div class="section-head"><div><h2>Для чого потрібен скелет?</h2><p>Скелет виконує кілька важливих функцій.</p></div></div>
+      <div class="cards">
+        <div class="panel"><div class="emoji">🏛️</div><h3>Опорна</h3><p>Скелет є внутрішньою опорою тіла, надає йому форму та підтримує м’які тканини.</p></div>
+        <div class="panel"><div class="emoji">🛡️</div><h3>Захисна</h3><p>Череп захищає головний мозок, хребет — спинний мозок, грудна клітка — серце й легені.</p></div>
+        <div class="panel"><div class="emoji">🏃</div><h3>Рухова</h3><p>Кістки разом із суглобами та м’язами утворюють систему важелів, що забезпечує рухи.</p></div>
+        <div class="panel"><div class="emoji">🩸</div><h3>Кровотворна</h3><p>У червоному кістковому мозку утворюються клітини крові.</p></div>
+        <div class="panel"><div class="emoji">⚗️</div><h3>Обмінна</h3><p>Кісткова тканина є важливим запасом мінеральних речовин, зокрема сполук кальцію та фосфору.</p></div>
+      </div>
+      <div class="callout">💡 <b>Пам’ятай:</b> скелет не рухається самостійно — рухи відбуваються завдяки спільній роботі кісток, суглобів і м’язів.</div>
+    </section>
+    <section id="facts" class="book-section" hidden>
+      <div class="section-head"><div><h2>Цікаво знати!</h2><p>Кілька фактів, які допоможуть запам’ятати тему.</p></div></div>
+      <div class="cards">
+        <div class="panel"><div class="emoji">🦴</div><h3>Кістки — живі</h3><p>Кісткова тканина постійно оновлюється: старі ділянки руйнуються, а нові формуються.</p></div>
+        <div class="panel"><div class="emoji">📏</div><h3>Найдовша кістка</h3><p>Стегнова кістка — найдовша й одна з найміцніших кісток скелета людини.</p></div>
+        <div class="panel"><div class="emoji">🧠</div><h3>Захист мозку</h3><p>Кістки мозкового відділу черепа утворюють міцну оболонку навколо головного мозку.</p></div>
+        <div class="panel"><div class="emoji">🧩</div><h3>Не всі кістки рухомі</h3><p>Більшість кісток черепа з’єднані нерухомо, а нижня щелепа має рухоме з’єднання.</p></div>
+      </div>
+      <div class="callout">🌱 <b>Як піклуватися про скелет?</b> Рухайся регулярно, харчуйся різноманітно, дотримуйся правильної постави та правил безпеки під час спорту.</div>
+    </section>
+    <section id="quiz" class="book-section" hidden>
+      <div class="section-head"><div><h2>Перевір свої знання</h2><p>10 запитань. Обери одну правильну відповідь у кожному.</p></div></div>
+      <div class="panel quiz" id="quizArea"></div>
+      <div class="panel" style="margin-top:14px"><div class="progress"><span id="progressBar"></span></div><p class="small" id="progressText">Відповіді: 0 із 10</p><div class="score" id="scoreText">Успіхів! 🌟</div><button class="btn primary" id="restartQuiz" style="margin-top:10px">Пройти ще раз</button></div>
+    </section>
+    <section id="myths" class="book-section" hidden>
+      <div class="section-head"><div><h2>Факт чи міф?</h2><p>Прочитай твердження та виріши, чи воно правильне.</p></div></div>
+      <div class="myth-grid" id="mythArea"></div>
+    </section>
+  </main>
+  <footer>Інтерактивний лепбук з біології · 8 клас<br><span>Тема: «Відділи скелета людини»</span></footer>
+</div>
+<script>
+const home=document.getElementById('home'), book=document.getElementById('book');
+function openBook(){home.classList.add('hidden');document.getElementById('about').style.display='none';book.classList.add('visible');window.scrollTo({top:0,behavior:'smooth'});showSection('overview')}
+function closeBook(){book.classList.remove('visible');home.classList.remove('hidden');document.getElementById('about').style.display='';window.scrollTo({top:0,behavior:'smooth'})}
+function showSection(id){document.querySelectorAll('.book-section').forEach(s=>s.hidden=s.id!==id);document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.target===id));}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.target)));
+document.querySelectorAll('.more').forEach(b=>b.addEventListener('click',()=>{const d=b.nextElementSibling;d.classList.toggle('open');const open=d.classList.contains('open');b.textContent=open?'− Закрити кишеньку':'＋ Відкрити кишеньку';b.setAttribute('aria-expanded',String(open))}));
+const questions=[
+['Який відділ скелета захищає головний мозок?',['Скелет тулуба','Череп','Скелет верхніх кінцівок','Тазовий пояс'],1,'Мозковий відділ черепа утворює кісткову порожнину для головного мозку.'],
+['Скільки пар ребер зазвичай має людина?',['10','11','12','13'],2,'У типовому скелеті людини є 12 пар ребер.'],
+['Яка кістка є найдовшою в тілі людини?',['Плечова','Стегнова','Великогомілкова','Променева'],1,'Стегнова кістка розташована у стегні й є найдовшою.'],
+['Яка частина скелета захищає серце та легені?',['Грудна клітка','Тазовий пояс','Кисть','Череп'],0,'Грудна клітка утворена ребрами, грудиною та грудними хребцями.'],
+['Скільки хребців у шийному відділі?',['5','7','10','12'],1,'Шийний відділ хребта складається із семи хребців.'],
+['Які кістки входять до складу передпліччя?',['Плечова і ліктьова','Ліктьова і променева','Стегнова і мала гомілкова','Велика і мала гомілкові'],1,'Передпліччя утворене ліктьовою та променевою кістками.'],
+['Що входить до мозкового відділу черепа?',['Кістки, що захищають мозок','Кістки кисті','Ребра та грудина','Кістки стопи'],0,'Мозковий відділ черепа оточує та захищає головний мозок.'],
+['Яка функція скелета пов’язана з утворенням клітин крові?',['Опорна','Захисна','Кровотворна','Рухова'],2,'Клітини крові утворюються в червоному кістковому мозку.'],
+['Що належить до скелета тулуба?',['Череп і нижня щелепа','Хребет і грудна клітка','Кисть і передпліччя','Стегно і стопа'],1,'Скелет тулуба складається з хребта та грудної клітки.'],
+['Які структури разом забезпечують рух тіла?',['Лише кістки','Лише шкіра','Кістки, суглоби й м’язи','Лише хребет'],2,'Кістки, суглоби та м’язи працюють разом, забезпечуючи рух.']
+];
+let answers=Array(questions.length).fill(null), locked=Array(questions.length).fill(false);
+function renderQuiz(){const area=document.getElementById('quizArea');area.innerHTML='';questions.forEach((q,i)=>{const card=document.createElement('div');card.className='q-card';const h=document.createElement('h3');h.textContent=(i+1)+'. '+q[0];card.append(h);const opts=document.createElement('div');opts.className='options';q[1].forEach((o,j)=>{const b=document.createElement('button');b.className='option';b.textContent=o;b.disabled=locked[i];if(locked[i]&&j===q[2])b.classList.add('correct');if(locked[i]&&answers[i]===j&&j!==q[2])b.classList.add('wrong');b.addEventListener('click',()=>{if(locked[i])return;answers[i]=j;locked[i]=true;renderQuiz()});opts.append(b)});card.append(opts);if(locked[i]){const f=document.createElement('div');f.className='feedback';f.textContent=(answers[i]===q[2]?'✓ Правильно! ':'✗ Не зовсім. ')+q[3];card.append(f)}area.append(card)});updateScore()}
+function updateScore(){let done=locked.filter(Boolean).length,score=answers.reduce((s,a,i)=>s+(a===questions[i][2]?1:0),0);document.getElementById('progressBar').style.width=(done/questions.length*100)+'%';document.getElementById('progressText').textContent='Відповіді: '+done+' із '+questions.length;document.getElementById('scoreText').textContent=done===questions.length?'Твій результат: '+score+' із 10 '+(score>=8?'🏆 Чудова робота!':score>=5?'👏 Гарний результат!':'💪 Повтори матеріал і спробуй ще!'):'Правильних відповідей наразі: '+score}
+document.getElementById('restartQuiz').addEventListener('click',()=>{answers=Array(questions.length).fill(null);locked=Array(questions.length).fill(false);renderQuiz()});renderQuiz();
+const myths=[
+['У дорослої людини зазвичай 12 пар ребер.',true,'У типовому скелеті є 12 пар ребер.'],
+['Усі кістки черепа рухомо з’єднані між собою.',false,'Більшість кісток черепа з’єднані нерухомо швами; рухомою є нижня щелепа.'],
+['Хребет захищає спинний мозок.',true,'Спинний мозок проходить у хребтовому каналі, утвореному хребцями.'],
+['Кістки самостійно скорочуються та рухають кінцівки.',false,'Кістки не скорочуються. Рух забезпечують м’язи, які діють на кістки через суглоби.']
+];
+const mythArea=document.getElementById('mythArea');myths.forEach((m,i)=>{const el=document.createElement('div');el.className='myth';el.innerHTML='<div class="mini-label">Твердження '+(i+1)+'</div>';const p=document.createElement('p');p.textContent=m[0];el.append(p);const yes=document.createElement('button');yes.textContent='Факт';const no=document.createElement('button');no.textContent='Міф';const res=document.createElement('div');res.className='result';function choose(v){yes.disabled=true;no.disabled=true;res.textContent=(v===m[1]?'✓ Правильно! ':'✗ Це '+(m[1]?'факт. ':'міф. '))+m[2]}yes.onclick=()=>choose(true);no.onclick=()=>choose(false);el.append(yes,no,res);mythArea.append(el)});
+</script>
+</body>
+</html>
